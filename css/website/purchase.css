@@ -1,0 +1,677 @@
+/**
+ * Purchase/Pricing Section Styles
+ * Redesigned to match website theme with proper 4-card layout and particle effects
+ */
+.purchase {
+    padding: 8rem 0;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.purchase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(circle at 20% 20%, rgba(0, 102, 255, 0.06) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 0, 136, 0.06) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    animation: background-pulse 8s ease-in-out infinite;
+}
+
+/**
+ * Floating particles background effect
+ */
+.purchase::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+            radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 136, 0.3), transparent),
+            radial-gradient(2px 2px at 40px 70px, rgba(255, 0, 136, 0.2), transparent),
+            radial-gradient(1px 1px at 90px 40px, rgba(0, 102, 255, 0.4), transparent),
+            radial-gradient(1px 1px at 130px 80px, rgba(0, 255, 136, 0.2), transparent),
+            radial-gradient(2px 2px at 160px 30px, rgba(255, 0, 136, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: particles-float 20s linear infinite;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@keyframes background-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes particles-float {
+    0% { transform: translateY(0px) translateX(0px); }
+    33% { transform: translateY(-20px) translateX(10px); }
+    66% { transform: translateY(0px) translateX(-10px); }
+    100% { transform: translateY(-20px) translateX(0px); }
+}
+
+.purchase .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.purchase-content {
+    position: relative;
+    z-index: 1;
+}
+
+.purchase .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.purchase-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/**
+ * Pricing Grid - 4-card horizontal layout that stacks properly on mobile
+ */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 0 auto 5rem auto;
+    max-width: 1200px;
+    justify-items: center;
+}
+
+/**
+ * Pricing Cards - Matching website theme with subtle gradients and clean borders
+ */
+.pricing-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: var(--transition);
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+    overflow: hidden;
+}
+
+/**
+ * Top gradient line effect matching feature cards
+ */
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.pricing-card:hover::before {
+    transform: scaleX(1);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+/**
+ * Card variants with subtle theme-matching styling
+ */
+.pricing-card.popular {
+    border-color: rgba(0, 255, 136, 0.3);
+    background: linear-gradient(135deg, var(--bg-tertiary), rgba(0, 255, 136, 0.02));
+}
+
+.pricing-card.featured {
+    border-color: rgba(255, 0, 136, 0.3);
+    background: linear-gradient(135deg, var(--bg-tertiary), rgba(255, 0, 136, 0.02));
+}
+
+.pricing-card.popular:hover {
+    box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+    border-color: rgba(0, 255, 136, 0.5);
+}
+
+.pricing-card.featured:hover {
+    box-shadow: 0 15px 40px rgba(255, 0, 136, 0.15);
+    border-color: rgba(255, 0, 136, 0.5);
+}
+
+/**
+ * Badges - Clean design matching navigation brand styling
+ */
+.popular-badge,
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 10;
+    text-shadow: var(--glow-primary);
+    box-shadow: var(--glow-primary);
+}
+
+.featured-badge {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+}
+
+/**
+ * Pricing header
+ */
+.pricing-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+}
+
+.pricing-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.pricing-card:hover .pricing-header h3 {
+    color: var(--primary-color);
+    text-shadow: var(--glow-primary);
+}
+
+/**
+ * Price display
+ */
+.price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.currency {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-top: 0.4rem;
+}
+
+.amount {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 0.9;
+    text-shadow: var(--glow-primary);
+}
+
+.period {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+/**
+ * Features list - Clean styling matching feature cards
+ */
+.pricing-features {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-features li {
+    padding: 0.6rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-features li:hover {
+    color: var(--text-primary);
+    padding-left: 0.5rem;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/**
+ * Pricing buttons - Matching button component styles
+ */
+.pricing-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pricing-btn.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-primary);
+    box-shadow: var(--glow-primary);
+}
+
+.pricing-btn.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+}
+
+.pricing-btn.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+.pricing-btn.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+}
+
+.pricing-btn.btn-outline {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.pricing-btn.btn-outline:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/**
+ * Login section - Completely redesigned to eliminate background issues
+ */
+.login-section {
+    margin: 4rem 0 3rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.login-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.login-divider::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), var(--border-color));
+    margin-right: 1rem;
+}
+
+.login-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--border-color), var(--border-color));
+    margin-left: 1rem;
+}
+
+.login-divider span {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/**
+ * Enhanced Sign In button styling
+ */
+.login-btn {
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, var(--bg-tertiary), rgba(255, 255, 255, 0.02));
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.login-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.login-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.login-btn:hover::after {
+    left: 100%;
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(0, 255, 136, 0.15);
+}
+
+.login-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+/**
+ * Enhanced statistics section with better visual design
+ */
+.purchase-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--bg-tertiary), rgba(255, 255, 255, 0.02));
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.stat::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(0, 255, 136, 0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 20px;
+}
+
+.stat:hover::before {
+    transform: scaleX(1);
+}
+
+.stat:hover::after {
+    opacity: 1;
+}
+
+.stat:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.2),
+            0 0 30px rgba(0, 255, 136, 0.15);
+    border-color: rgba(0, 255, 136, 0.4);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.stat:hover .stat-number {
+    transform: scale(1.1);
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.stat:hover .stat-label {
+    color: var(--text-primary);
+}
+
+/**
+ * Responsive Design
+ */
+@media (max-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 600px;
+    }
+
+    .purchase-stats {
+        gap: 2rem;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .purchase {
+        padding: 6rem 0;
+    }
+
+    .purchase .container {
+        padding: 0 1rem;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        gap: 2rem;
+    }
+
+    .pricing-card {
+        max-width: none;
+        min-height: 480px;
+    }
+
+    .login-divider::before,
+    .login-divider::after {
+        display: none;
+    }
+
+    .login-divider span {
+        font-size: 0.95rem;
+    }
+
+    .login-btn {
+        padding: 1rem 2.5rem;
+        font-size: 0.95rem;
+    }
+
+    .purchase-stats {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 350px;
+    }
+
+    .stat {
+        padding: 2rem 1.25rem;
+    }
+
+    .stat-number {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .purchase .section-title {
+        font-size: 2.5rem;
+    }
+
+    .purchase-description {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem;
+        min-height: 450px;
+    }
+
+    .amount {
+        font-size: 2.5rem;
+    }
+
+    .pricing-btn {
+        padding: 0.9rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .login-btn {
+        padding: 0.9rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .stat {
+        padding: 1.8rem 1rem;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+}

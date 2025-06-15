@@ -1,0 +1,73 @@
+/* Button Components */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-primary);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+}
+
+.glow-btn {
+    box-shadow: var(--glow-primary);
+}
+
+.glow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn.large {
+    padding: 1.5rem 3rem;
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.btn.large small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* Button Responsive Design */
+@media (max-width: 768px) {
+    .other-platforms {
+        flex-direction: column;
+        align-items: center;
+    }
+}

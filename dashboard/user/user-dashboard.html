@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Leapfrog</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+
+<!-- Dashboard Loading Screen -->
+<div class="dashboard-loading" id="dashboardLoading">
+    <div class="loading-spinner"></div>
+</div>
+
+<!-- Dashboard Navigation -->
+<nav class="dashboard-nav">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <span class="brand-text">Leapfrog</span>
+            <span class="dashboard-label">Dashboard</span>
+        </div>
+
+        <div class="nav-actions">
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <span class="user-initial">B</span>
+                </div>
+                <div class="user-info">
+                    <span class="username">biggiemedium</span>
+                    <span class="user-plan">Premium</span>
+                </div>
+                <div class="user-dropdown">
+                    <button class="dropdown-toggle">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#profile" class="dropdown-item">Profile Settings</a>
+                        <a href="#billing" class="dropdown-item">Billing</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#logout" class="dropdown-item logout">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div class="dashboard-mobile-overlay" id="mobileOverlay"></div>
+
+<!-- Dashboard Sidebar -->
+<aside class="dashboard-sidebar" id="dashboardSidebar">
+    <div class="sidebar-content">
+        <nav class="sidebar-nav">
+            <h3 class="sidebar-title">Quick Actions</h3>
+
+            <a href="#dashboard" class="sidebar-link active" data-page="overview">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>Overview</span>
+            </a>
+
+            <a href="#downloads" class="sidebar-link" data-page="downloads">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>Downloads</span>
+            </a>
+
+            <a href="#announcements" class="sidebar-link" data-page="announcements">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect width="18" height="18" x="3" y="4" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <path d="M3 10H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>Announcements</span>
+                <div class="notification-badge">3</div>
+            </a>
+
+            <a href="#changelogs" class="sidebar-link" data-page="changelogs">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>Changelogs</span>
+            </a>
+
+            <a href="#forum" class="sidebar-link" data-page="community">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 15A2 2 0 0 1 19 17H7L4 20V5A2 2 0 0 1 6 3H19A2 2 0 0 1 21 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>Community</span>
+            </a>
+
+            <h3 class="sidebar-title">Account</h3>
+
+            <a href="#account" class="sidebar-link" data-page="profile">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21V19A4 4 0 0 0 16 15H8A4 4 0 0 0 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>Profile</span>
+            </a>
+
+            <a href="#billing" class="sidebar-link" data-page="billing">
+                <div class="link-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>Billing</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="sidebar-footer">
+        <div class="system-status">
+            <div class="status-indicator online"></div>
+            <div class="status-info">
+                <span class="status-label">System Status</span>
+                <span class="status-value">All Systems Operational</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Main Dashboard Content -->
+<main class="dashboard-main">
+    <div class="dashboard-container">
+
+        <!-- Dashboard Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1 class="glow-text">Welcome back, biggiemedium</h1>
+                    <p class="header-subtitle">Your Leapfrog client is ready to use</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary glow-btn download-btn" id="quickDownloadBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Download Client</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Stats -->
+        <section class="stat-cards">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <h3 class="stat-title">Uptime</h3>
+                    <div class="stat-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="stat-value">99.9%</p>
+                <p class="stat-description">Server uptime for the last 30 days</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <h3 class="stat-title">Client Version</h3>
+                    <div class="stat-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="stat-value">v2.1.4</p>
+                <p class="stat-description">Latest version available for download</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <h3 class="stat-title">Subscription</h3>
+                    <div class="stat-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="stat-value">Premium</p>
+                <p class="stat-description">Your account has full feature access</p>
+            </div>
+        </section>
+
+        <!-- Main Content Container -->
+        <div class="dashboard-main-content">
+            <div class="content-header">
+                <h2 class="content-title">Recent Activity</h2>
+                <span class="timestamp">2025-05-24 18:47:14</span>
+            </div>
+            <div class="content-body">
+                <p>Welcome to your dashboard, biggiemedium. Here you can download the latest client, check announcements, and manage your account.</p>
+                <p>The newest version of Leapfrog Client (v2.1.4) is now available with improved performance and new features.</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- Toast Notification Template -->
+<div class="dashboard-toast" id="dashboardToast" style="display: none;">
+    <div class="toast-content">
+        <div class="toast-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="toast-message">
+            <div class="toast-title" id="toastTitle">Success</div>
+            <div class="toast-text" id="toastText">Action completed successfully</div>
+        </div>
+        <button class="toast-close" id="toastClose">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<!-- JavaScript Modules -->
+<script src="../../js/fontUtil.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/dashboard/dashboardManager.js"></script>
+<script src="../../js/dashboard/dashboardInteractions.js"></script>
+</body>
+</html>

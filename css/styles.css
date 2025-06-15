@@ -1,0 +1,14 @@
+/* Main CSS file that imports all components */
+
+/* main look of our website in theme.css -> colors, animation, and style */
+@import url('theme.css');
+
+@import url('website/header.css');
+@import url('website/hero.css');
+@import url('website/buttons.css');
+@import url('website/features.css');
+@import url('website/colors.css');
+@import url('website/purchase.css');
+@import url('website/gallery.css');
+@import url('website/community.css');
+@import url('website/footer.css');

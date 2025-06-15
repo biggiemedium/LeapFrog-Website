@@ -1,0 +1,68 @@
+/* Community Section Styles */
+.community {
+    padding: 8rem 0;
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.community-content p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.community-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.community-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+    min-width: 200px;
+}
+
+.community-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+}
+
+.link-icon {
+    font-size: 2rem;
+}
+
+.community-link div {
+    text-align: left;
+}
+
+.community-link strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.community-link small {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Community Responsive Design */
+@media (max-width: 768px) {
+    .community-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
